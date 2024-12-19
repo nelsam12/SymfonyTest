@@ -1,0 +1,88 @@
+<div {{ attributes }}>
+	{{ form_start(form) }}
+
+	<div class="flex gap-4">
+		<div class="w-full">
+			{{ form_label(form.surnom) }}
+			{{ form_widget(form.surnom) }}
+			{{ form_errors(form.surnom) }}
+		</div>
+
+		<div class="w-full">
+			{{ form_label(form.telephone) }}
+			{{ form_widget(form.telephone) }}
+			{{ form_errors(form.telephone) }}
+		</div>
+	</div>
+
+
+	<div>
+		{{ form_label(form.adresse) }}
+		{{ form_widget(form.adresse) }}
+		{{ form_errors(form.adresse) }}
+	</div>
+
+	<div>
+		{{ form_row(form.addUser) }}
+	</div>
+
+	{% if form.compte is defined %}
+		<div class="w-full">
+			{{ form_label(form.compte.picture) }}
+			{{ form_widget(form.compte.picture) }}
+			{{ form_errors(form.compte.picture) }}
+		</div>
+		<div class="flex gap-4">
+			<div class="w-full">
+				{{ form_label(form.compte.nom) }}
+				{{ form_widget(form.compte.nom) }}
+				{{ form_errors(form.compte.nom) }}
+			</div>
+			<div class="w-full">
+				{{ form_label(form.compte.prenom) }}
+				{{ form_widget(form.compte.prenom) }}
+				{{ form_errors(form.compte.prenom) }}
+			</div>
+		</div>
+		<div class="flex gap-4">
+			<div class="w-full">
+				{{ form_label(form.compte.login) }}
+				{{ form_widget(form.compte.login) }}
+				{{ form_errors(form.compte.login) }}
+			</div>
+			<div class="w-full">
+				{{ form_label(form.compte.password) }}
+				{{ form_widget(form.compte.password) }}
+				{{ form_errors(form.compte.password) }}
+			</div>
+		</div>
+		<div class="w-full">
+			{{ form_label(form.compte.email) }}
+			{{ form_widget(form.compte.email) }}
+			{{ form_errors(form.compte.email) }}
+		</div>
+		{# <div class="w-full">
+					{{ form_label(form.compte.roles) }}
+					{{ form_widget(form.compte.roles) }}
+					{{ form_errors(form.compte.roles) }}
+				</div> #}
+		<div class="w-full">
+			{{ form_label(form.compte.roles) }}
+			<input type="text" value="Client" class="block w-full px-3 py-2 border rounded-md bg-gray-200" disabled>
+            {{ form_widget(form.compte.roles, {
+                'attr' : {
+                    'class' : 'block w-full px-3 py-2 border rounded-md bg-gray-200 hidden',
+                    
+                }
+            }) }}
+			<input type="hidden" name="form[compte][roles]" value="ROLE_CLIENT">
+		</div>
+	{% endif %}
+
+	<div class="mt-6 text-right">
+		<button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" data-action="live#action:prevent" data-live-action-param="store">Save</button>
+
+	</div>
+
+	{{ form_end(form) }}
+</div>

@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!
+{% endblock %}
+
+{% block body %}
+	<div class="flex items-center justify-center h-lvh">
+		<div class="bg-white shadow-2xl rounded-lg overflow-hidden max-w-4xl w-full grid grid-cols-1 md:grid-cols-2">
+
+			<div
+				class="relative bg-gradient-to-br from-blue-900 to-blue-700 p-8 text-white flex flex-col justify-center">
+				<!-- Formes décoratives en arrière-plan avec effet de parallaxe -->
+				<div class="absolute top-0 left-0 bg-yellow-400 w-24 h-24 rounded-full transform -translate-x-12 -translate-y-12 animate-bounce-slow"></div>
+				<div class="absolute bottom-0 right-0 bg-yellow-400 w-36 h-36 rounded-full transform translate-x-12 translate-y-12 animate-bounce-slow"></div>
+
+				<div class="relative z-10 flex flex-col items-center">
+					<div class="p-4 flex items-center h-32">
+						<svg class="w-20 h-20 mr-2" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<rect width="40" height="24" rx="4" fill="white"></rect>
+							<path d="M17 8H7C5.89543 8 5 8.89543 5 10V16C5 17.1046 5.89543 18 7 18H17C18.1046 18 19 17.1046 19 16V10C19 8.89543 18.1046 8 17 8Z" stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+							<path d="M12 12C12.5523 12 13 11.5523 13 11C13 10.4477 12.5523 10 12 10C11.4477 10 11 10.4477 11 11C11 11.5523 11.4477 12 12 12Z" stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+							<path d="M16 16H8" stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+						</svg>
+						<div class="flex flex-col">
+							<span class="text-white font-bold text-xl">GESTION</span>
+							<span class="text-white font-bold text-xl">BOUTIQUE</span>
+						</div>
+					</div>
+					<h2 class="text-4xl font-extrabold mb-4 text-center">Bienvenue
+						<br>
+						Nelsam Boutique</h2>
+					<p class="text-lg text-blue-200 mb-6 text-center">La plateforme idéale pour gérer vos ventes, articles et clients avec efficacité.</p>
+				</div>
+			</div>
+
+			<!-- Section droite : Formulaire de connexion -->
+			<div class="p-10 flex flex-col justify-center">
+				<h1 class="text-4xl font-bold text-gray-800 mb-6 text-center">Connexion</h1>
+				<p class="text-lg text-gray-500 text-center mb-8">Connectez-vous pour accéder à votre espace de gestion.</p>
+
+				<form method="post" class="space-y-6">
+					{% if error %}
+						<div class="alert alert-error py-3 rounded-lg text-lg flex items-center justify-center text-white font-bold w-full">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					{% endif %}
+
+					{% if app.user %}
+						<div class="mb-3">
+							You are logged in as
+							{{ app.user.userIdentifier }},
+							<a href="{{ path('app_logout') }}">Logout</a>
+						</div>
+					{% endif %}
+
+					<label class="flex items-center gap-4">
+						<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" fill="currentColor" class="h-6 w-6 opacity-70">
+							<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"/>
+						</svg>
+						<input type="text" value="{{ last_username }}" name="_username" id="username" class="w-full mt-1 px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 form-focus" autocomplete="username" placehoder="Login" autofocus>
+					</label>
+					<label class=" flex items-center gap-4">
+						<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" fill="currentColor" class="h-6 w-6 opacity-70">
+							<path fill-rule="evenodd" d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z" clip-rule="evenodd"/>
+						</svg>
+						<input type="password" name="_password" id="password" class="w-full mt-1 px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 form-focus3" autocomplete="current-password">
+					</label>
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+					<div class="flex justify-end">
+						<button class="w-full bg-yellow-500 text-white py-3 rounded-lg font-semibold hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 btn-hover transition-all" type="submit">
+							Se connecter
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

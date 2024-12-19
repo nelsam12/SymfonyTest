@@ -1,0 +1,160 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ClientController!
+{% endblock %}
+
+{% block body %}
+	<!-- Sidebar -->
+	<div class="flex">
+		{% include("partials/sideBar.html.twig") %}
+		<!-- Main Content -->
+		<div
+			class="flex-1 p-8 space-y-8">
+			<!-- Navbar -->
+			<div class="flex justify-between items-center mb-8">
+				<div class="flex items-center space-x-4">
+					<h1 class="text-3xl font-bold">Tableau de Bord</h1>
+				</div>
+				<a href="{{path('app_logout')}}" class="bg-blue-600 text-white py-2 px-4 rounded-lg">Déconnexion</a>
+			</div>
+
+			<!-- Cards Section -->
+			<div
+				class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+				<!-- Clients Card -->
+				<div class="bg-white p-6 rounded-lg shadow-md">
+					<h3 class="text-xl font-semibold text-gray-700">Clients</h3>
+					<p class="text-3xl font-bold text-blue-600">150</p>
+					<p class="text-sm text-gray-500">Total des clients actifs</p>
+				</div>
+
+				<!-- Dettes Card -->
+				<div class="bg-white p-6 rounded-lg shadow-md">
+					<h3 class="text-xl font-semibold text-gray-700">Dettes Non Soldées</h3>
+					<p class="text-3xl font-bold text-red-600">€2000</p>
+					<p class="text-sm text-gray-500">Montant restant des dettes</p>
+				</div>
+
+				<!-- Articles Card -->
+				<div class="bg-white p-6 rounded-lg shadow-md">
+					<h3 class="text-xl font-semibold text-gray-700">Articles en Stock</h3>
+					<p class="text-3xl font-bold text-green-600">120</p>
+					<p class="text-sm text-gray-500">Quantité totale en stock</p>
+				</div>
+
+				<!-- Out of Stock Card -->
+				<div class="bg-white p-6 rounded-lg shadow-md">
+					<h3 class="text-xl font-semibold text-gray-700">Articles en Rupture de Stock</h3>
+					<p class="text-3xl font-bold text-red-600">5</p>
+					<p class="text-sm text-gray-500">Articles en rupture de stock</p>
+				</div>
+			</div>
+
+			<!-- Clients Table Section -->
+			<div class="bg-white p-6 rounded-lg shadow-md mt-6">
+				<div class="mb-4 flex justify-between items-center gap-5">
+					<h3 class="text-xl font-semibold text-gray-700 mb-4">Liste des Clients</h3>
+
+					<div class="flex gap-3 w-[70%]">
+						<input type="text" placeholder="Rechercher par téléphone..." class="w-full p-2 border rounded-lg">
+						<button type="button" class="bg-blue-600 text-white py-2 px-4 rounded-lg">
+							Search
+						</button>
+
+					</div>
+
+				</div>
+				<table class="min-w-full table-auto border-separate border-spacing-0">
+					<thead>
+						<tr class="bg-gray-200">
+							<th class="py-2 px-4 text-left border-b">Nom</th>
+							<th class="py-2 px-4 text-left border-b">Téléphone</th>
+							<th class="py-2 px-4 text-left border-b">Adresse</th>
+							<th class="py-2 px-4 text-left border-b">Montant dû</th>
+							<th class="py-2 px-4 text-left border-b">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Dynamically generated rows -->
+						<tr class="hover:bg-gray-50">
+							<td class="py-2 px-4 border-b">John Doe</td>
+							<td class="py-2 px-4 border-b">+123456789</td>
+							<td class="py-2 px-4 border-b">123 Rue de Paris</td>
+							<td class="py-2 px-4 border-b">€1500</td>
+							<td class="py-2 px-4 border-b text-blue-600 hover:underline">Détails</td>
+						</tr>
+						<tr class="hover:bg-gray-50">
+							<td class="py-2 px-4 border-b">Alice Martin</td>
+							<td class="py-2 px-4 border-b">+987654321</td>
+							<td class="py-2 px-4 border-b">45 Avenue des Champs</td>
+							<td class="py-2 px-4 border-b">€200</td>
+							<td class="py-2 px-4 border-b text-blue-600 hover:underline">Détails</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<!-- Pagination Section -->
+				<div class="mt-4 flex justify-between items-center">
+					<span class="text-sm text-gray-600">Affichage de 1-10 sur 50 clients</span>
+					<div class="flex space-x-2">
+						<button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Précédent</button>
+						<button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">1</button>
+						<button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">2</button>
+						<button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">3</button>
+						<button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Suivant</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Articles Table Section -->
+			<div class="bg-white p-6 rounded-lg shadow-md mt-8">
+				<h3 class="text-xl font-semibold text-gray-700 mb-4">Articles en Stock</h3>
+				
+				<table class="min-w-full table-auto border-separate border-spacing-0">
+					<thead>
+						<tr class="bg-gray-200">
+							<th class="py-2 px-4 text-left border-b">Nom de l'article</th>
+							<th class="py-2 px-4 text-left border-b">Quantité en Stock</th>
+							<th class="py-2 px-4 text-left border-b">Statut</th>
+							<th class="py-2 px-4 text-left border-b">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Dynamically generated rows -->
+						<tr class="hover:bg-gray-50">
+							<td class="py-2 px-4 border-b">Article A</td>
+							<td class="py-2 px-4 border-b">15</td>
+							<td class="py-2 px-4 border-b text-green-600">En Stock</td>
+							<td class="py-2 px-4 border-b text-blue-600 hover:underline">Modifier</td>
+						</tr>
+						<tr class="hover:bg-gray-50">
+							<td class="py-2 px-4 border-b">Article B</td>
+							<td class="py-2 px-4 border-b">0</td>
+							<td class="py-2 px-4 border-b text-red-600">Rupture de Stock</td>
+							<td class="py-2 px-4 border-b text-blue-600 hover:underline">Modifier</td>
+						</tr>
+						<tr class="hover:bg-gray-50">
+							<td class="py-2 px-4 border-b">Article C</td>
+							<td class="py-2 px-4 border-b">3</td>
+							<td class="py-2 px-4 border-b text-yellow-600">Stock Faible</td>
+							<td class="py-2 px-4 border-b text-blue-600 hover:underline">Modifier</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<!-- Pagination Section -->
+				<div class="mt-4 flex justify-between items-center">
+					<span class="text-sm text-gray-600">Affichage de 1-10 sur 30 articles</span>
+					<div class="flex space-x-2">
+						<button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Précédent</button>
+						<button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">1</button>
+						<button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">2</button>
+						<button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">3</button>
+						<button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Suivant</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

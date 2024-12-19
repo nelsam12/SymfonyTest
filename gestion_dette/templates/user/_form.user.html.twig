@@ -1,0 +1,74 @@
+<div id="user-form">
+	{{ form_start(form, { attr: { 'data-turbo-frame': 'user-form-frame' } }) }}
+
+	<div class="my-2">
+		{{ form_label(form.picture) }}
+		{{ form_widget(form.picture) }}
+		{% if form.picture.vars.errors|length > 0 %}
+			<div class="error">
+				{{ form_errors(form.picture) }}
+			</div>
+		{% endif %}
+	</div>
+	<div class="my-2">
+		{{ form_label(form.login) }}
+		{{ form_widget(form.login) }}
+		{% if form.login.vars.errors|length > 0 %}
+			<div class="error">
+				{{ form_errors(form.login) }}
+			</div>
+		{% endif %}
+	</div>
+
+	<div class="my-2">
+		{{ form_label(form.password) }}
+		{{ form_widget(form.password) }}
+		{% if form.password.vars.errors|length > 0 %}
+			<div class="error">
+				{{ form_errors(form.password) }}
+			</div>
+		{% endif %}
+	</div>
+
+	<div class="my-2">
+		{{ form_label(form.nom) }}
+		{{ form_widget(form.nom) }}
+		{% if form.nom.vars.errors|length > 0 %}
+			<div class="error">
+				{{ form_errors(form.nom) }}
+			</div>
+		{% endif %}
+	</div>
+
+	<div class="my-2">
+		{{ form_label(form.prenom) }}
+		{{ form_widget(form.prenom) }}
+		{% if form.prenom.vars.errors|length > 0 %}
+			<div class="error">
+				{{ form_errors(form.prenom) }}
+			</div>
+		{% endif %}
+	</div>
+
+	<div class="my-2">
+		{{ form_label(form.email) }}
+		{{ form_widget(form.email) }}
+		{% if form.email.vars.errors|length > 0 %}
+			<div class="error">
+				{{ form_errors(form.email) }}
+			</div>
+		{% endif %}
+	</div>
+
+	<div class="my-2">
+		{{ form_label(form.roles) }}
+		{{ form_widget(form.roles) }}
+		{% if form.roles.vars.errors|length > 0 %}
+			<div class="error">
+				{{ form_errors(form.roles) }}
+			</div>
+		{% endif %}
+	</div>
+
+	{{ form_end(form) }}
+</div>

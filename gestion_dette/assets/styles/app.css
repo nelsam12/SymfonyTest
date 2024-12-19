@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 0.2em;
+}

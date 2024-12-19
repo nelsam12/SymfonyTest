@@ -1,0 +1,40 @@
+<div {{ attributes }}>
+	<div>
+		{# <h2>{{ dette.id ? 'Modifier une Dette' : 'Créer une Dette' }}</h2> #}
+
+		<div class="mb-4">
+			<label for="client">Client</label>
+			<select id="client" wire:model="clientId">
+				<option value="">-- Sélectionnez un Client --</option>
+				{% for client in clients %}
+					<option value="{{ client.id }}">{{ client.surnom }}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="mb-4">
+			<h3>Articles</h3>
+			{% for article in articles %}
+				<div>
+					{{ article.libelle }}
+					(Quantité :
+					{{ article.qteStock }})
+					<button wire:click="removeArticle({{ loop.index0 }})">Supprimer</button>
+				</div>
+			{% endfor %}
+		</div>
+
+		<div class="mb-4">
+			<label for="article">Ajouter un article</label>
+			<select id="article" wire:change="addArticle($event.target.value, 1)">
+				<option value="">-- Sélectionnez un Article --</option>
+				{# {% for article in articles %}
+					<option value="{{ article.id }}">{{ article.libelle }}</option>
+				{% endfor %} #}
+			</select>
+		</div>
+
+		<button wire:click="save">Enregistrer</button>
+	</div>
+
+</div>

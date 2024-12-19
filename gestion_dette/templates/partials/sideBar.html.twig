@@ -1,0 +1,53 @@
+<div class="w-64 h-lvh bg-blue-600 text-white p-6 space-y-8">
+	<h2 class="text-2xl font-semibold">Dashboard</h2>
+	<ul class="space-y-4">
+		<li>
+			<a href="#" class="flex items-center space-x-2 hover:bg-blue-500 p-3 rounded-lg transition">
+				<i class="fas fa-tachometer-alt"></i>
+				<span>Dashboard</span>
+			</a>
+		</li>
+		{% if is_granted('ROLE_CLIENT') %}
+			<li>
+				<a href="{{path('article.index')}}" class="flex items-center space-x-2 hover:bg-blue-500 p-3 rounded-lg transition">
+					<i class="fas fa-cogs"></i>
+					<span>Mes Dettes</span>
+				</a>
+			</li>
+		{% endif %}
+		{% if not is_granted('ROLE_CLIENT') %}
+			<li>
+				<a href="{{path('client.index')}}" class="flex items-center space-x-2 hover:bg-blue-500 p-3 rounded-lg transition">
+					<i class="fas fa-users"></i>
+					<span>Clients</span>
+				</a>
+			</li>
+		{% endif %}
+		<li>
+			<a href="{{path('dette.index')}}" class="flex items-center space-x-2 hover:bg-blue-500 p-3 rounded-lg transition">
+				<i class="fas fa-dollar-sign"></i>
+				<span>Dettes</span>
+			</a>
+		</li>
+		<li>
+			<a href="{{path('demandedette.index')}}" class="flex items-center space-x-2 hover:bg-blue-500 p-3 rounded-lg transition">
+				<i class="fas fa-file-invoice-dollar"></i>
+				<span>Demandes de Dette</span>
+			</a>
+		</li>
+		{% if is_granted('ROLE_ADMIN') %}
+			<li>
+				<a href="{{path('article.index')}}" class="flex items-center space-x-2 hover:bg-blue-500 p-3 rounded-lg transition">
+					<i class="fas fa-cogs"></i>
+					<span>Articles</span>
+				</a>
+			</li>
+		{% endif %}
+		<li>
+			<a href="{{path('user.index')}}" class="flex items-center space-x-2 hover:bg-blue-500 p-3 rounded-lg transition">
+				<i class="fas fa-users-cog"></i>
+				<span>Comptes Utilisateurs</span>
+			</a>
+		</li>
+	</ul>
+</div>

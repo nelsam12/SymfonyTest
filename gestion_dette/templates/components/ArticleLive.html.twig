@@ -1,0 +1,11 @@
+<div{{attributes}}>
+	<!-- component html -->
+	{{ form_start(form) }}
+	{{ form_row(form.libelle) }}
+	{{ form_row(form.qteStock) }}
+	{{ form_row(form.prixUnitaire) }}
+	<div class="mt-6 text-right">
+		<button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" data-action="live#action:prevent" data-live-action-param="store">Save</button>
+	</div>
+	{{ form_end(form) }}
+</div>

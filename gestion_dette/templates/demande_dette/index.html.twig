@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DemandeDetteController!
+{% endblock %}
+
+{% block body %}
+	<!-- Sidebar -->
+	<div class="flex">
+		{% include("partials/sideBar.html.twig") %}
+		<!-- Main Content -->
+		<div class="bg-white p-6 rounded-lg shadow-md mt-8 w-[80%] mx-auto max-h-[]">
+			<h3 class="text-xl font-semibold text-gray-700 mb-4">Gestion des Demandes de Dette</h3>
+			<div class="overflow-x-auto">
+				<div class="mb-4  flex justify-end">
+					<a href="{{path('demandedette.index')}}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+						<i class="fas fa-plus mr-2"></i>
+						Ajouter une Demande
+					</a>
+				</div>
+				<table class="min-w-full table-auto border-collapse border border-gray-200">
+					<thead class="bg-gray-100">
+						<tr>
+							<th class="py-2 px-4 border border-gray-200 text-left">Nom du Client</th>
+							<th class="py-2 px-4 border border-gray-200 text-left">Téléphone</th>
+							<th class="py-2 px-4 border border-gray-200 text-left">Date</th>
+							<th class="py-2 px-4 border border-gray-200 text-left">Montant</th>
+							<th class="py-2 px-4 border border-gray-200 text-left">État</th>
+							<th class="py-2 px-4 border border-gray-200 text-center">Actions</th>
+						</tr>
+						<tr>
+							<!-- Filtres -->
+							<td class="py-2 px-4 border border-gray-200">
+								<input type="text" placeholder="Nom" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500">
+							</td>
+							<td class="py-2 px-4 border border-gray-200">
+								<input type="text" placeholder="Téléphone" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500">
+							</td>
+							<td class="py-2 px-4 border border-gray-200">
+								<input type="date" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500">
+							</td>
+							<td class="py-2 px-4 border border-gray-200">
+								<input type="text" placeholder="Montant min-max" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500">
+							</td>
+							<td class="py-2 px-4 border border-gray-200">
+								<select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500">
+									<option>Tout</option>
+									<option>En cours</option>
+									<option>Annulée</option>
+								</select>
+							</td>
+							<td class="py-2 px-4 border border-gray-200 text-center">
+								<button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+									Filtrer
+								</button>
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Lignes dynamiques -->
+						<tr class="hover:bg-gray-50">
+							<td class="py-2 px-4 border border-gray-200">Alice Martin</td>
+							<td class="py-2 px-4 border border-gray-200">+987654321</td>
+							<td class="py-2 px-4 border border-gray-200">2024-12-15</td>
+							<td class="py-2 px-4 border border-gray-200">€1,500</td>
+							<td class="py-2 px-4 border border-gray-200 text-blue-600">En cours</td>
+							<td class="py-2 px-4 border border-gray-200 text-center">
+								<button class="bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600">Valider</button>
+								<button class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600">Annuler</button>
+							</td>
+						</tr>
+						<tr class="hover:bg-gray-50">
+							<td class="py-2 px-4 border border-gray-200">John Doe</td>
+							<td class="py-2 px-4 border border-gray-200">+123456789</td>
+							<td class="py-2 px-4 border border-gray-200">2024-12-14</td>
+							<td class="py-2 px-4 border border-gray-200">€500</td>
+							<td class="py-2 px-4 border border-gray-200 text-red-600">Annulée</td>
+							<td class="py-2 px-4 border border-gray-200 text-center">
+								<button class="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600">Détails</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- Pagination -->
+			<div class="flex justify-between items-center mt-4">
+				<p class="text-sm text-gray-600">
+					Page
+					<span class="font-medium text-gray-800">1</span>
+					sur
+					<span class="font-medium text-gray-800">5</span>
+				</p>
+				<div class="flex gap-2">
+					<button class="bg-gray-300 text-gray-700 px-3 py-1 rounded-lg hover:bg-gray-400 disabled:opacity-50" disabled>
+						<i class="fas fa-chevron-left"></i>
+						Précédent
+					</button>
+					<button class="bg-blue-600 text-white px-3 py-1 rounded-lg hover:bg-blue-700">Suivant
+						<i class="fas fa-chevron-right"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>{% endblock %}
